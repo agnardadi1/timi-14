@@ -622,11 +622,11 @@
         let notendur = [];
 
         for (let i = 1; i <= 3; i++) {
-          const res = await fetch(
-            `https://jsonplaceholder.typicode.com/users/${i}`,
-          );
-          const data = await res.json();
-          notendur.push(data.name);
+          await fetch(`https://jsonplaceholder.typicode.com/users/${i}`)
+            .then((res) => res.json())
+            .then((data) => {
+              notendur.push(data.name);
+            });
         }
 
         console.log("Notendur:", notendur);
